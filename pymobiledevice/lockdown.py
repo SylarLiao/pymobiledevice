@@ -194,7 +194,7 @@ class LockdownClient(object):
             ValidatePair = {"Label": self.label, "Request": "ValidatePair", "PairRecord": pair_record}
             self.c.sendPlist(ValidatePair)
             r = self.c.recvPlist()
-            if not r or r.has_key("Error"):
+            if not r or "Error" in r:
                 pair_record = None
                 self.logger.error("ValidatePair fail: %s", ValidatePair)
                 return False
